@@ -1,0 +1,3 @@
+[29-Feb-2020 07:42:59 UTC] PHP Fatal error:  require(): Failed opening required 'http://drkiranshomeo.com/blog/wp-load.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/j59xbiteq589/public_html/application/views/home.php on line 4
+[29-Feb-2020 07:47:30 UTC] PHP Fatal error:  require(): Failed opening required 'http://drkiranshomeo.com/blog/wp-blog-header.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/j59xbiteq589/public_html/application/views/home.php on line 4
+[29-Feb-2020 07:48:28 UTC] PHP Fatal error:  require(): Failed opening required 'http://drkiranshomeo.com/blog/wp-blog-header.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/j59xbiteq589/public_html/application/views/home.php on line 4

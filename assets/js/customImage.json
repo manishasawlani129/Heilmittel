@@ -1,0 +1,25 @@
+{
+  "items" : [
+    {
+      "img": "img-05.jpg",
+      "alt" : "Testimonial Image 1",
+      "name" : "Premchand Kundnani",
+      "case_title" : "Businessman",
+      "desc" : "I was very pleased with my experience at Heilmittel. I have known her for the last 10 years. She has handled lots of cases and has cured many patients suffering from various diseases. She consults her patients until she gets to know her patient's history and the root cause of the problem. She is a good listener, practical and understands the patients and their problems carefully, and diagnose the problem in the first go thereby providing the best suitable medicines."
+    },
+    {
+      "img": "img-10.jpg",
+      "alt" : "Testimonial Image 2",
+      "name" : "Mohini",
+      "case_title" : "Software Engineer",
+      "desc" : "I am taking her medicines from last 5 years. I am very satisfied with her prescriptions. She is my family doctor and everyone in my family use to consult her if anyone is unwell. She completely cured my husband's old allergic rhinitis. I have recommended her to many people, and they are happy with her treatment and approach. I pray that she continues her services like this always."
+    },
+    {
+      "img": "img-11.jpg",
+      "alt" : "Testimonial Image 1",
+      "name" : "Vibha Upadhayay",
+      "case_title" : "Housewife",
+      "desc" : "I was suffering from sarcoidosis for last 2 years. So I took treatment of steroids and cured. But, after some time I started experiencing cough issues frequently. Finally, I opted for a homeopathic treatment by Dr. Kiran Sawlani and got a permanent cure. Now I am perfectly alright. Many thanks to her and also wish her the best for her life."
+    }
+  ]
+}
