@@ -66,22 +66,22 @@
 						<fieldset>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="form-group">
-									<input type="text" name="name" class="form-control" placeholder="Your Name">
+									<input type="text" name="name" required="" class="form-control" placeholder="Your Name *" maxlength="150">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="form-group">
-									<input type="text" name="phone" class="form-control" placeholder="Contact Number">
+									<input type="Number" name="phone" required="" class="form-control" placeholder="Contact Number *" maxlength="10">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="form-group">
-									<input type="email" name="email" class="form-control" placeholder="Your E-mail">
+									<input type="email" name="email" class="form-control" placeholder="Your E-mail" maxlength="80">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="form-group">
-									<input type="text" name="subject" class="form-control" placeholder="Subject">
+									<input type="text" name="subject" required="" class="form-control" placeholder="Subject *" maxlength="255">
 								</div>
 							</div>
 							<div class="col-md-12 col-sm-12 col-xs-12">
@@ -90,13 +90,31 @@
 								</div>
 							</div>
 							<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
-								<button id="btn_send" class="th-btnform th-btnform-lg" type="submit"><span>Send Your Message</span></button>
+								<button id="btn_send" class="th-btnform th-btnform-lg" type="button"><span>Send Your Message</span></button>
 							</div>
 						</fieldset>
 					</form>
 				</div>
 			</div>
 		</div>
+		<div id="myContactModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      	<div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			        	<h4 class="modal-title"></h4>
+			      	</div>
+			      	<div class="modal-body">
+			        	<p></p>
+			     	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      	</div>
+			    </div>
+			</div>
+		</div>
+
 		<!--************************************
 				Appointment end
 		*************************************-->

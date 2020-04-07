@@ -233,18 +233,22 @@
 		});
 		$('#btn_send').off('click').on('click', function () {
 			form = $("#get_in_touch").serialize();
-			console.log('Get In Touch clicked');
-			$.ajax({
-			    type : 'POST',
-			    url : '<?php echo base_url();?>contact/getInTouch',
-			    data : form,
-			    success: function(data){
-			    	console.log(data,'data');
-		           	alert('Successful!');
-			    },
-			});
-			event.preventDefault();
-     		return false;
+			if($("#get_in_touch").valid()) {
+				$.ajax({
+				    type : 'POST',
+				    url : '<?php echo base_url();?>index.php/contact/getInTouch',
+				    data : form,
+				    dataType: 'json',
+				    success: function(data)
+				    {
+				    	document.getElementById("get_in_touch").reset();
+				    	$("#myContactModal .modal-header h4").html(data.header);
+				    	$("#myContactModal .modal-body p").html(data.message);
+				    	$("#myContactModal").modal('show')
+				    },
+				});
+	     		return false;
+     		}
 		});
 	</script>
 </body>
