@@ -72,10 +72,9 @@ class Contact extends CI_Controller {
                 $message = 'We have received your enquiry and will respond you soon. For urgent enquiries please call us on <b>+91-9887-6887-13</b> or email us on <b>drkiran@drkiranshomeo.com</b>.';
                 $header = 'Thank you for contacting us.';
 
-                $this->load->library('phpmailer_lib');
+                $this->load->library('PHPMailer_Lib');
                 $mail = $this->phpmailer_lib->load();
-
-                $mail->isSMTP();
+               // $mail->isSMTP();
                 $mail->Host     = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'dr.kirukiran@gmail.com';
@@ -102,19 +101,19 @@ class Contact extends CI_Controller {
                 <br/>
                 The Support team";
                 $mail->Body = $mailContent;
-                
                 if(!$mail->send()){
                     echo 'Message could not be sent.';
                     echo 'Mailer Error: ' . $mail->ErrorInfo;
-                }else{
-                    echo 'Message has been sent';
-                } 
+                } else {
+                    echo json_encode(['header' => $header, 'message' => $message]);
+                }
             } else {
                 $message = 'We were not able to book save your details due to some technical issue occurred. Please retry filling the form with relavant information. If the error still exists, give us a call on <b>+91-9887-6887-13</b> or email us on <b>drkiran@drkiranshomeo.com</b>. <br/>Sorry for the inconvinience. :( ';
                 $header = 'Technical Error';
+                echo json_encode(['header' => $header, 'message' => $message]);
             }
         }
-        echo json_encode(['header' => $header, 'message' => $message]);
+        
     }
 
 }
