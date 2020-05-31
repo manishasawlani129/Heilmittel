@@ -1,5 +1,5 @@
 <?php 
-include(dirname(__DIR__)."\common\header.php"); ?>
+include(dirname(__DIR__)."/common/header.php"); ?>
 
 <!--************************************
 		Home Slider Start
@@ -54,4 +54,4 @@ include(dirname(__DIR__)."\common\header.php"); ?>
 <!--************************************
 		Main End
 *************************************-->
-<?php include(dirname(__DIR__).'\common\footer.php'); ?>
+<?php include(dirname(__DIR__).'/common/footer.php'); ?>

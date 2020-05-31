@@ -45,6 +45,13 @@ jQuery(document).ready(function() {
 		autoplay_slideshow: false,
 		social_tools: false
 	});
+	jQuery("a[data-rel^='campPrettyPhoto']").prettyPhoto({
+		animation_speed: 'normal',
+		theme: 'dark_square',
+		slideshow: 3000,
+		autoplay_slideshow: false,
+		social_tools: false
+	});
 	/* ---------------------------------------
 			PORTFOLIO FILTERABLE
 	-------------------------------------- */
@@ -142,50 +149,50 @@ jQuery(document).ready(function() {
 	});
 	/* -------------------------------------
 			Google Map
-	-------------------------------------- */
-	jQuery("#th-locationmap").gmap3({
-		map:{
-			options:{
-				center:[46.578498,2.457275],
-				zoom: 6,
-				scrollwheel: false,
-				disableDoubleClickZoom: true,
-			}
-		},
-		marker:{
-			values:[
-				{latLng:[48.8620722, 2.352047], data:"Paris !", options:{icon: "images/mapmarker.png"}},
-				{address:"86000 Poitiers, France", data:"Poitiers : great city !", options:{icon: "images/mapmarker.png"}},
-				{address:"66000 Perpignan, France", data:"Perpignan ! GO USAP !", options:{icon: "images/mapmarker.png"}}
-			],
-			options:{
-				draggable: false
-			},
-			events:{
-				mouseover: function(marker, event, context){
-					var map = $(this).gmap3("get"),
-					infowindow = $(this).gmap3({get:{name:"infowindow"}});
-					if (infowindow){
-						infowindow.open(map, marker);
-						infowindow.setContent(context.data);
-					} else {
-						$(this).gmap3({
-							infowindow:{
-								anchor:marker,
-								options:{content: context.data}
-							}
-						});
-					}
-				},
-				mouseout: function(){
-					var infowindow = $(this).gmap3({get:{name:"infowindow"}});
-					if (infowindow){
-						infowindow.close();
-					}
-				}
-			}
-		}
-	});
+	// -------------------------------------- */
+	// jQuery("#th-locationmap").gmap3({
+	// 	map:{
+	// 		options:{
+	// 			center:[46.578498,2.457275],
+	// 			zoom: 6,
+	// 			scrollwheel: false,
+	// 			disableDoubleClickZoom: true,
+	// 		}
+	// 	},
+	// 	marker:{
+	// 		values:[
+	// 			{latLng:[48.8620722, 2.352047], data:"Paris !", options:{icon: "images/mapmarker.png"}},
+	// 			{address:"86000 Poitiers, France", data:"Poitiers : great city !", options:{icon: "images/mapmarker.png"}},
+	// 			{address:"66000 Perpignan, France", data:"Perpignan ! GO USAP !", options:{icon: "images/mapmarker.png"}}
+	// 		],
+	// 		options:{
+	// 			draggable: false
+	// 		},
+	// 		events:{
+	// 			mouseover: function(marker, event, context){
+	// 				var map = $(this).gmap3("get"),
+	// 				infowindow = $(this).gmap3({get:{name:"infowindow"}});
+	// 				if (infowindow){
+	// 					infowindow.open(map, marker);
+	// 					infowindow.setContent(context.data);
+	// 				} else {
+	// 					$(this).gmap3({
+	// 						infowindow:{
+	// 							anchor:marker,
+	// 							options:{content: context.data}
+	// 						}
+	// 					});
+	// 				}
+	// 			},
+	// 			mouseout: function(){
+	// 				var infowindow = $(this).gmap3({get:{name:"infowindow"}});
+	// 				if (infowindow){
+	// 					infowindow.close();
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// });
 	/* -------------------------------------
 			BRANDS SLIDER
 	-------------------------------------- */
@@ -243,5 +250,8 @@ jQuery(document).ready(function() {
 	$('#date').on('change', function(){
 		console.log('this time');
 	});
-	$('.th-datetimepicker').datetimepicker();
+	$('.th-datetimepicker').datetimepicker({
+		format: 'DD/MM/YYYY',
+		minDate: new Date()
+	});
 });

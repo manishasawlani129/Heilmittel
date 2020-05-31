@@ -168,29 +168,27 @@
 						<form class="th-formappointment" method="post" action="<?php echo base_url();?>contact/bookAppointment/">
 							<fieldset>
 								<div class="form-group">
-									<input type="text" id="name" name="name" class="form-control" placeholder="Name">
+									<input type="text" id="name" name="name" class="form-control" placeholder="Name *">
 								</div>
 								<div class="form-group">
 									<input type="email" name="email" id="email" class="form-control" placeholder="E-mail">
 								</div>
 								<div class="form-group">
-									<input type="text" name="number" id="number" class="form-control" placeholder="Phone Number">
+									<input type="text" name="number" id="number" class="form-control" placeholder="Phone Number *" maxlength="10">
 								</div>
 								<div class="form-group">
 									<input type="text" name="age" id="age" class="form-control" placeholder="Your Age">
 								</div>
 								<div class="form-group">
-									<span class="th-select">
-										<select name="sel_gender" id="sel_gender">
-											<option value="1">Male</option>
-											<option value="2">Female</option>
-										</select>
-									</span>
+									<select name="sel_gender" id="sel_gender" class="form-control">
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</select>
 								</div>
 								<div class="form-group">
 									<div class="th-dateinputicon">
 										<i class="fa fa-calendar"></i>
-										<input type="text" name="visitdate" class="form-control th-datetimepicker" placeholder="Date or time to visit">
+										<input type="text" name="visitdate" class="form-control th-datetimepicker" placeholder="Date of visit *">
 									</div>
 								</div>
 								<button id="submit_aptform" value="Submit Request" name="submit_aptform" class="th-btnform th-btnform-lg" type="submit">Submit Request</button>
@@ -214,7 +212,7 @@
 	<script src="<?php echo base_url();?>assets/js/parallax.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/prettyPhoto.js"></script>
 	<script src="<?php echo base_url();?>assets/js/appear.js"></script>
-	<script src="<?php echo base_url();?>assets/js/gmap3.js"></script>
+	<!-- <script src="<?php echo base_url();?>assets/js/gmap3.js"></script> -->
 	
 	<script src="<?php echo base_url(); ?>assets/admin/jquery.validate.js"></script>
 	<script src="<?php echo base_url();?>assets/js/themefunction.js"></script>
@@ -226,6 +224,12 @@
 		        },
 		        number : {
 		          required : true,
+		        },
+		        sel_gender: {
+		        	required: true
+		        },
+		        visitdate: {
+		        	required: true
 		        }
 		    },
 		    errorElement : 'div',

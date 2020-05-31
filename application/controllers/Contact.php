@@ -19,27 +19,74 @@ class Contact extends CI_Controller {
 
     public function bookAppointment()
     {
-        if($this->input->post('submit_aptform')) {
-            $name = $_POST['name'];
-            $phone  = $_POST['number'];
-            $email  = $_POST['email'];
-            $age  = $_POST['age'];
-            $gender  = $_POST['sel_gender'];
-            $date_of_appointment = $_POST['visitdate'];
-            //Send Mail Script to be added
-            //Insert and show success page
-            if ($this->appointment->book()) {
-                $data = array(
-                    'name' => $this->input->post('name'), 
-                    'date' => $this->input->post('visitdate'),
-                    'status' => true
-                );
-                $this->load->view('common/appointment_success', $data);    
-            } else {
-                $this->load->view('common/appointment_success', ['status' => false]);    
-            }
+        $rules = array(
+            array(
+                'field' => 'name',
+                'label' => 'Your Name',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'number',
+                'label' => 'Phone Number',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'sel_gender',
+                'label' => 'Gender',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'visitdate',
+                'label' => 'Date Or Time To Visit',
+                'rules' => 'required'
+            )
+        );
+        $this->form_validation->set_rules($rules);
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('common/appointment_success', ['status' => false]);
         } else {
-            return false;
+            if ($this->appointment->book()) {
+                $this->load->library('PHPMailer_Lib');
+                $mail = $this->phpmailer_lib->load();
+                $mail->Host     = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'dr.kirukiran@gmail.com';
+                $mail->Password = 'kneerkiran';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port     = 587;
+                
+                $mail->setFrom('dr.kirukiran@gmail.com', "Dr. Kiran's Heilmittel");
+                $mail->addAddress('dr.kiran104@gmail.com');
+                $mail->Subject = "Book an appointment form website";
+                $mail->isHTML(true);
+                
+                $mailContent = "Hi Dr.Kiran<br/><br/>
+                <p>We just received an appointment from dr.kiranshomeo.com. Please find the below mentioned details regarding it.</p><h3>Person Details</h3>
+                <span><b>Name</b>:" . $this->input->post('name') . "</span><br/>
+                <span><b>Phone No.</b>:" . $this->input->post('number') . "</span><br/>
+                <span><b>Email Address</b>:" . $this->input->post('email') . "</span><br/>
+                <span><b>Age</b>:" . $this->input->post('age') . "</span><br/>
+                <span><b>Gender</b>:" . $this->input->post('sel_gender') . "</span><br/>
+                <span><b>Date of Visit</b>:" . $this->input->post('visitdate') . "</span><br/>
+                <br/>
+
+                <b>Thanks,</b>
+                <br/>
+                The Support team";
+                $mail->Body = $mailContent;
+                if(!$mail->send()){
+                    $this->load->view('common/appointment_success');
+                } else {
+                    $data = array(
+                        'name' => $this->input->post('name'), 
+                        'date' => $this->input->post('visitdate'),
+                        'status' => true
+                    );
+                    $this->load->view('common/appointment_success', $data);
+                }
+            } else {
+                $this->load->view('common/appointment_success', ['status' => false]); 
+            }
         }
     }
 
@@ -74,7 +121,6 @@ class Contact extends CI_Controller {
 
                 $this->load->library('PHPMailer_Lib');
                 $mail = $this->phpmailer_lib->load();
-               // $mail->isSMTP();
                 $mail->Host     = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'dr.kirukiran@gmail.com';
@@ -87,7 +133,6 @@ class Contact extends CI_Controller {
                 $mail->Subject = "Enquiry form website";
                 $mail->isHTML(true);
                 
-                // Email body content
                 $mailContent = "Hi Dr.Kiran<br/><br/>
                 <p>We just received an inquiry from dr.kiranshomeo.com. Please find the below mentioned details regarding it.</p><h3>Person Details</h3>
                 <span><b>Name</b>:" . $this->input->post('name') . "</span><br/>

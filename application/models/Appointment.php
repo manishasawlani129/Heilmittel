@@ -21,7 +21,8 @@ class Appointment extends CI_Model
         $this->email  = $_POST['email'];
         $this->age  = $_POST['age'];
         $this->gender  = $_POST['sel_gender'];
-        $this->date_of_appointment = $_POST['visitdate'];
+        $date = DateTime::createFromFormat('d/m/Y', $_POST['visitdate']);
+        $this->date_of_appointment = $date->format('Y-m-d');;
         if($this->db->insert('tbl_appointment', $this)) {
             return true;
         } else {
